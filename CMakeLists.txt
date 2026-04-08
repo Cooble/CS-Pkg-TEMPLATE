@@ -1,10 +1,11 @@
 cmake_minimum_required(VERSION 3.16.1)
 
+include(CircuitSimBootstrap.cmake)
+
 project("ExamplePluginSolution")
 
 
 # ==== Subdirectories
-include(CircuitSimSDK.cmake)
 add_subdirectory(ExamplePlugin)
 
 
