@@ -1,0 +1,10 @@
+{
+    "states": {
+        "ROOT/FORWARDER[0]": {
+            "state": false
+        },
+        "ROOT/LEVER[1]": {
+            "on": false
+        }
+    }
+}

@@ -1,0 +1,13 @@
+{
+  "version": "0.2.1",
+  "defaults": {},
+  "configurations": [
+    {
+      "type": "default",
+      "project": "CMakeLists.txt",
+      "projectTarget": "CircuitSim.exe (_deps\\sdk-build\\CircuitSim\\CircuitSim.exe)",
+      "name": "CircuitSim.exe (_deps\\sdk-build\\CircuitSim\\CircuitSim.exe)",
+      "cwd": "${workspaceRoot}"
+    }
+  ]
+}

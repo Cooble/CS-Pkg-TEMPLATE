@@ -1,0 +1,39 @@
+{
+    "casing": {
+        "enable_default": true,
+        "pin_positions": [
+            [
+                0,
+                2
+            ],
+            [
+                10,
+                2
+            ]
+        ],
+        "pos0": [
+            0.0,
+            0.0
+        ],
+        "pos1": [
+            10.0,
+            4.0
+        ],
+        "rectangle": [
+            0.0,
+            0.0,
+            10.0,
+            4.0
+        ],
+        "type": "FORWARDER"
+    },
+    "circuit": {
+        "custom_name": "Signal Forwarder",
+        "description": "",
+        "pin_names": [
+            "IN",
+            "OUT"
+        ],
+        "type": "FORWARDER"
+    }
+}
