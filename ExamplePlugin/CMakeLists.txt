@@ -13,4 +13,4 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 	"src"
 )
 
-setup_circuitsim_package(${PROJECT_NAME})
+setup_circuitsim_plugin(${PROJECT_NAME})

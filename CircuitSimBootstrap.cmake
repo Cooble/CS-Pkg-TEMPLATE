@@ -1,4 +1,4 @@
-# Bootstrap to fetch the CircuitSim SDK based on the package.json
+# Bootstrap to fetch the CircuitSim SDK based on the plugin.json
 # 
 # !! include it as the FIRST thing in your root CMakeLists.txt
 
@@ -23,9 +23,9 @@ else()
     set(_CS_REPO_URL "https://github.com/Cooble/circuitsim")
 endif()
 
-# ── package.json ──────────────────────────────────────────────────────────────
-if(NOT EXISTS "${CMAKE_SOURCE_DIR}/package.json")
-    message(FATAL_ERROR "package.json not found in ${CMAKE_SOURCE_DIR}.")
+# ── plugin.json ──────────────────────────────────────────────────────────────
+if(NOT EXISTS "${CMAKE_SOURCE_DIR}/plugin.json")
+    message(FATAL_ERROR "plugin.json not found in ${CMAKE_SOURCE_DIR}.")
 endif()
 
 function(extract_var_from_file out_var file_path var_name)
@@ -37,8 +37,8 @@ function(extract_var_from_file out_var file_path var_name)
     set(${out_var} "${_value}" PARENT_SCOPE)
 endfunction()
 
-extract_var_from_file(CS_PLUGIN_VERSION "${CMAKE_SOURCE_DIR}/package.json" CS_PLUGIN_VERSION)
-extract_var_from_file(CS_PLUGIN_NAME    "${CMAKE_SOURCE_DIR}/package.json" CS_PLUGIN_NAME)
+extract_var_from_file(CS_PLUGIN_VERSION "${CMAKE_SOURCE_DIR}/plugin.json" CS_PLUGIN_VERSION)
+extract_var_from_file(CS_PLUGIN_NAME    "${CMAKE_SOURCE_DIR}/plugin.json" CS_PLUGIN_NAME)
 
 string(REGEX MATCH "^[0-9]+" SDK_VERSION "${CS_PLUGIN_VERSION}")
 
@@ -58,4 +58,4 @@ if(NOT TARGET Common)
 endif()
 
 # ── Pull in SDK macros ────────────────────────────────────────────────────────
-include("${CMAKE_SOURCE_DIR}/SDK/cmake/SetupCircuitSimPackage.cmake")
+include("${CMAKE_SOURCE_DIR}/SDK/cmake/SetupCircuitSimPlugin.cmake")
