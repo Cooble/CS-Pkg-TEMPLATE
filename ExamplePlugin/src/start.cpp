@@ -4,35 +4,40 @@
 #include <log/Log.hpp>
 #include <nlohmann/json.hpp>
 
+
+EXPORT_CIRCUIT_FOUNDRY(ExampleFoundry);
+
 using namespace sim;
 
 
-void ExampleComponent::solder(std::span<PinState* const> pins_write, std::span<const PinState* const> pins_read, const std::vector<std::string>& pinNames)
+void ExampleForwarder::solder(std::span<PinState* const> pins_write, std::span<const PinState* const> pins_read, const std::vector<std::string>& pinNames)
 {
 	// stores pin pointers for later access
 	Circuit::solder(pins_write, pins_read, pinNames);
 }
 
-bool ExampleComponent::drawWindow()
+bool ExampleForwarder::drawWindow()
 {
 	return ImGui::Checkbox("Break on HIGH", &m_breakpoint_active);
 }
 
-void ExampleComponent::save(nlohmann::json& j) const
+void ExampleForwarder::save(nlohmann::json& j) const
 {
 	j["state"] = m_breakpoint_active;
 }
 
-void ExampleComponent::load(const nlohmann::json& j)
+void ExampleForwarder::load(const nlohmann::json& j)
 {
 	m_breakpoint_active = j.value("state", false);
 }
 
-bool ExampleComponent::step(bool ignoreBreakpoint)
+bool ExampleForwarder::step(bool ignoreBreakpoint)
 {
 	// forward the input to the output
 	// e.g. HIGH to HIGH, DOWN to DOWN, Z to Z
 	PinState inState = readPin(IN);
+	m_state = inState;
+
 	writePin(OUT, inState);
 
 	// equivalent to:

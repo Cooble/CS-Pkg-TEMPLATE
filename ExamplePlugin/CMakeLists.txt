@@ -13,4 +13,6 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 	"src"
 )
 
-setup_circuitsim_plugin(${PROJECT_NAME})
+cs_add_plugin(${PROJECT_NAME})
+
+add_subdirectory(test)

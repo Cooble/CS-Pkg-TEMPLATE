@@ -28,7 +28,7 @@ if(NOT EXISTS "${CMAKE_SOURCE_DIR}/plugin.json")
     message(FATAL_ERROR "plugin.json not found in ${CMAKE_SOURCE_DIR}.")
 endif()
 
-function(extract_var_from_file out_var file_path var_name)
+function(_extract_var_from_file out_var file_path var_name)
     file(READ "${file_path}" _json_content)
     string(JSON _value ERROR_VARIABLE _err GET "${_json_content}" ${var_name})
     if(_err)
@@ -37,13 +37,13 @@ function(extract_var_from_file out_var file_path var_name)
     set(${out_var} "${_value}" PARENT_SCOPE)
 endfunction()
 
-extract_var_from_file(CS_PLUGIN_VERSION "${CMAKE_SOURCE_DIR}/plugin.json" CS_PLUGIN_VERSION)
-extract_var_from_file(CS_PLUGIN_NAME    "${CMAKE_SOURCE_DIR}/plugin.json" CS_PLUGIN_NAME)
+_extract_var_from_file(CS_PLUGIN_VERSION "${CMAKE_SOURCE_DIR}/plugin.json" CS_PLUGIN_VERSION)
+_extract_var_from_file(CS_PLUGIN_NAME    "${CMAKE_SOURCE_DIR}/plugin.json" CS_PLUGIN_NAME)
 
 string(REGEX MATCH "^[0-9]+" SDK_VERSION "${CS_PLUGIN_VERSION}")
 
 # ── Fetch CircuitSim SDK ──────────────────────────────────────────────────────
-if(NOT TARGET Common)
+if(NOT TARGET CircuitSim::Common)
     set_property(GLOBAL PROPERTY CIRCUIT_SIM_PLUGIN_DEVELOPMENT_TARGET ${CS_PLUGIN_NAME})
     message(STATUS "Fetching CircuitSim SDK v${SDK_VERSION}...")
 
@@ -58,4 +58,4 @@ if(NOT TARGET Common)
 endif()
 
 # ── Pull in SDK macros ────────────────────────────────────────────────────────
-include("${CMAKE_SOURCE_DIR}/SDK/cmake/SetupCircuitSimPlugin.cmake")
+include("${CMAKE_SOURCE_DIR}/SDK/cmake/cs_plugin.cmake")
