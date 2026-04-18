@@ -1,6 +1,8 @@
 # Bootstrap to fetch the CircuitSim SDK based on the plugin.json
 # 
 # !! include it as the FIRST thing in your root CMakeLists.txt
+#
+# !! Place inside the root directory next to plugin.json
 
 
 include(FetchContent)
@@ -24,8 +26,8 @@ else()
 endif()
 
 # ── plugin.json ──────────────────────────────────────────────────────────────
-if(NOT EXISTS "${CMAKE_SOURCE_DIR}/plugin.json")
-    message(FATAL_ERROR "plugin.json not found in ${CMAKE_SOURCE_DIR}.")
+if(NOT EXISTS "${CMAKE_CURRENT_LIST_DIR}/plugin.json")
+    message(FATAL_ERROR "plugin.json not found in ${CMAKE_CURRENT_LIST_DIR}.")
 endif()
 
 function(_extract_var_from_file out_var file_path var_name)
@@ -37,8 +39,9 @@ function(_extract_var_from_file out_var file_path var_name)
     set(${out_var} "${_value}" PARENT_SCOPE)
 endfunction()
 
-_extract_var_from_file(CS_PLUGIN_VERSION "${CMAKE_SOURCE_DIR}/plugin.json" CS_PLUGIN_VERSION)
-_extract_var_from_file(CS_PLUGIN_NAME    "${CMAKE_SOURCE_DIR}/plugin.json" CS_PLUGIN_NAME)
+_extract_var_from_file(CS_PLUGIN_VERSION "${CMAKE_CURRENT_LIST_DIR}/plugin.json" CS_PLUGIN_VERSION)
+_extract_var_from_file(CS_PLUGIN_NAME    "${CMAKE_CURRENT_LIST_DIR}/plugin.json" CS_PLUGIN_NAME)
+set(CS_PLUGIN_ROOT_DIRECTORY "${CMAKE_CURRENT_LIST_DIR}")
 
 string(REGEX MATCH "^[0-9]+" SDK_VERSION "${CS_PLUGIN_VERSION}")
 
