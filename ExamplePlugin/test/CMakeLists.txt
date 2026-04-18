@@ -17,4 +17,4 @@ target_include_directories(${PROJECT_NAME} PRIVATE "src")
 
 # Register tests against the Plugin
 include("${CMAKE_SOURCE_DIR}/SDK/cmake/cs_test.cmake")
-cs_add_test(${PROJECT_NAME} ExamplePlugin)
+cs_add_integration_test(${PROJECT_NAME} ExamplePlugin)
