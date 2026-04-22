@@ -61,4 +61,8 @@ if(NOT TARGET CircuitSim::Common)
 endif()
 
 # ── Pull in SDK macros ────────────────────────────────────────────────────────
-include("${CMAKE_SOURCE_DIR}/SDK/cmake/cs_plugin.cmake")
+set(SDK_MACRO_FILE "${CMAKE_SOURCE_DIR}/SDK/cmake/cs_plugin.cmake")
+if(NOT EXISTS "${SDK_MACRO_FILE}")
+    set(SDK_MACRO_FILE "${CMAKE_SOURCE_DIR}/cmake/cs_plugin.cmake")
+endif()
+include("${SDK_MACRO_FILE}")
