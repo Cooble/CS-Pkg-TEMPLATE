@@ -10,10 +10,10 @@ EXPORT_CIRCUIT_FOUNDRY(ExampleFoundry);
 using namespace sim;
 
 
-void ExampleForwarder::solder(std::span<PinState* const> pins_write, std::span<const PinState* const> pins_read, const std::vector<std::string>& pinNames)
+void ExampleForwarder::solder(std::span<PinState* const> pins_write, std::span<const PinState* const> pins_read, double freq)
 {
 	// stores pin pointers for later access
-	Circuit::solder(pins_write, pins_read, pinNames);
+	Circuit::solder(pins_write, pins_read,  freq);
 }
 
 bool ExampleForwarder::drawWindow()

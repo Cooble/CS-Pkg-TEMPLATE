@@ -21,9 +21,7 @@ protected:
         bench.factory.loadLocalLibrary("test", std::make_unique<Foundry<ExampleForwarder>>());
 
         // load .cas/.sch files for the device under test 
-
-        // <directory>, <namespace>, <filter by type>, <ignore .dll presence since we're using local foundry>
-        bench.loader.loadFoundry(TEST_ASSETS_DIR, CS_PLUGIN_NAME, { ExampleForwarder::TYPE }, true);
+    	bench.loadDevices({ ExampleForwarder::TYPE }, true);
 
         // enable writing so we can use driveWire() on this device
         exampleCompId = bench.addDevice(ExampleForwarder::TYPE, /*enableWriting=*/true);

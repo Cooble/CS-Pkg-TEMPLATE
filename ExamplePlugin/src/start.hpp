@@ -12,7 +12,7 @@ class CS_PLUGIN_API ExampleForwarder : public sim::Circuit
 public:
     CIRCUIT_TYPE(EXAMPLES "FORWARDER")
 #include CIRCUIT_PINS(FORWARDER)
-    void solder(std::span<sim::PinState* const> pins_write, std::span<const sim::PinState* const> pins_read, const std::vector<std::string>& pinNames) override;
+    void solder(std::span<sim::PinState* const> pins_write, std::span<const sim::PinState* const> pins_read, double freq) override;
     
     bool step(bool) override;
     bool drawWindow() override;
