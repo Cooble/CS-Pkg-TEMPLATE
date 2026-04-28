@@ -1,8 +1,7 @@
-cmake_minimum_required(VERSION 3.16.1)
 project("ExamplePlugin")
 
 
-file(GLOB_RECURSE all_source_files
+file(GLOB_RECURSE all_source_files CONFIGURE_DEPENDS
 	"src/*.cpp"
     "src/*.hpp"
 )
@@ -15,4 +14,6 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 
 cs_add_plugin(${PROJECT_NAME})
 
-add_subdirectory(test)
+if(CS_TESTING_ENABLED)
+    add_subdirectory(test)
+endif()

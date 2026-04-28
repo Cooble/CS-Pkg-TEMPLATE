@@ -63,7 +63,7 @@
       }
     },
     {
-      "name": "linux-debug",
+      "name": "debug-linux-clang",
       "displayName": "Clang Linux Debug",
       "inherits": "base-clang-linux",
       "cacheVariables": {
@@ -71,7 +71,7 @@
       }
     },
     {
-      "name": "linux-release",
+      "name": "release-linux-clang",
       "displayName": "Clang Linux Release",
       "inherits": "base-clang-linux",
       "cacheVariables": {
@@ -109,12 +109,12 @@
   ],
   "buildPresets": [
     {
-      "name": "Linux Debug",
-      "configurePreset": "linux-debug"
+      "name": "Clang Linux Debug",
+      "configurePreset": "debug-linux-clang"
     },
     {
-      "name": "Linux Release",
-      "configurePreset": "linux-release"
+      "name": "Clang Linux Release",
+      "configurePreset": "release-linux-clang"
     },
     {
       "name": "Debug",
@@ -128,6 +128,5 @@
       "name": "Debug MSVC",
       "configurePreset": "debug64msvc"
     }
-    
   ]
 }
