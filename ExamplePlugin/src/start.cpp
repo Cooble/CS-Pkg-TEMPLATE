@@ -5,7 +5,6 @@
 #include <nlohmann/json.hpp>
 
 
-EXPORT_CIRCUIT_FOUNDRY(ExampleFoundry);
 
 using namespace sim;
 
