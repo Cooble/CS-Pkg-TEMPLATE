@@ -1,6 +1,9 @@
 #include <gtest/gtest.h>
-#include "utils/SimTestBench.hpp"
+#include "bench/SimTestBench.hpp"
 #include "start.hpp"
+
+using namespace csim::sim;
+using namespace csim::sim::bench;
 
 
 class ExampleTest : public ::testing::Test

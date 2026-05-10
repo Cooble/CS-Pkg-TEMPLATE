@@ -5,8 +5,7 @@
 #include <nlohmann/json.hpp>
 
 
-
-using namespace sim;
+using namespace csim::sim;
 
 
 void ExampleForwarder::solder(std::span<PinState* const> pins_write, std::span<const PinState* const> pins_read, double freq)

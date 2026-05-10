@@ -7,12 +7,12 @@
 
 #define EXAMPLES "EXAMPLES/"
 
-class CS_PLUGIN_API ExampleForwarder : public sim::Circuit
+class CS_PLUGIN_API ExampleForwarder : public csim::sim::Circuit
 {
 public:
     CIRCUIT_TYPE(EXAMPLES "FORWARDER")
 #include CIRCUIT_PINS(FORWARDER)
-    void solder(std::span<sim::PinState* const> pins_write, std::span<const sim::PinState* const> pins_read, double freq) override;
+    void solder(std::span<csim::sim::PinState* const> pins_write, std::span<const csim::sim::PinState* const> pins_read, double freq) override;
     
     bool step(bool) override;
     bool drawWindow() override;
@@ -31,7 +31,7 @@ private:
 };
 
 
-class ExampleFoundry : public sim::Foundry<ExampleForwarder>
+class ExampleFoundry : public csim::sim::Foundry<ExampleForwarder>
 {
 public:
     // called when dll is loaded

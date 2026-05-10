@@ -7,7 +7,7 @@ file(GLOB_RECURSE all_source_files CONFIGURE_DEPENDS
 )
 
 add_library(${PROJECT_NAME} OBJECT ${all_source_files})
-	
+
 target_include_directories(${PROJECT_NAME} PUBLIC
 	"src"
 )
